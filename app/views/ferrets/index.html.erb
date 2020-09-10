@@ -1,0 +1,8 @@
+<h1>This is the Ferrets index page.</h1>
+<ul>
+<% @ferrets.each do |ferret| %>
+<li><%= ferret.name %></li>
+<li><%= ferret.short_description %></li>
+<br>
+<% end %>
+</ul>
