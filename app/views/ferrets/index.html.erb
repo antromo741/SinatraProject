@@ -1,8 +1,8 @@
-<h1>This is the Ferrets index page.</h1>
+<h1>Welcome to Ferret Camp.</h1>
+<p> These are our ferrets!</p>
 <ul>
 <% @ferrets.each do |ferret| %>
-<li><%= ferret.name %></li>
-<li><%= ferret.short_description %></li>
-<br>
+<li><a href="/ferrets/<%=ferret.id %>"><%= ferret.name %>  <%# ferret.hair %></li>
 <% end %>
 </ul>
+<%# take out the hair, was just testing if worked%>
