@@ -21,4 +21,8 @@ class ApplicationController < Sinatra::Base
     User.find_by_id(session[:id]) 
   end
 
+  def logged_in?
+    !!current_user
+  end
+
 end

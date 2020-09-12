@@ -17,16 +17,27 @@
     <div class="wrapper">
 
       <nav>
-      <a href="/login">Log In</a>
-      <a href="/users/new">Sign Up</a>
+      <% if !logged_in? %>
+          <a href="/login">Log In</a>
+          <a href="/users/new">Sign Up</a>
+      <% else %>
+          <a href="/ferrets">Ferret Home</a>
+          <a href="/ferrets/new">Ferret Camp Signup</a>
+       <%#  <form method="" action="/logout">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="LogOut">
+        </form>  %>
+        <% end %>
       </nav>
-      <%#  <nav>
-      <a href="/ferrets">Ferret Home</a>
-      <a href="/ferrets/new">Ferret Camp Signup</a>
-      </nav>%>
+
         <%= yield %>
 
       <footer class="branding">
+      <div><% if !!logged_in? %>
+        <form method="post" action="/logout">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="LogOut">
+        <% end %></div> 
         <small>&copy; 2020 <strong>SinatraProjectPractice</strong></small>
       </footer>
     </div>
