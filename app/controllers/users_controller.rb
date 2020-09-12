@@ -1,20 +1,17 @@
-class UsersController < ApplicationController
-    #set :views, 'app/views/users'
+class UsersController < ApplicationController 
 
-    get '/users/new' do
-
+    get '/users/new' do 
+      # render the form to create a user account
+      erb :'users/new'
+    end 
+  
+    post '/users/new' do 
+      @user = User.new(email: params[:email], password: params[:password])
+      if @user.save
+        session[:id] = @user.id
+        redirect "/ferrets"
+      else 
         erb :'users/new'
+      end
     end
-
-    post '/users' do 
-        @user = User.new(email: params[:email], password: params[:password])
-        binding.pry
-        if @user.save
-            session[:id] = @user.id 
-            #redirect "/users/login or /users/profile"
-        else 
-            #@errors= @user.errors.full_messages
-            erb :'users/new
-        end
-    end
-end
+  end

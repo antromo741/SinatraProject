@@ -9,9 +9,10 @@ class ApplicationController < Sinatra::Base
     set :sessions, true
     set :session_secret, ENV['SESSION_SECRET']
   end
-
+  
+  #This dictates where we startup in views, in browser the homepage
   get "/" do
-    redirect "/ferrets"
+    erb :welcome
   end
 
 end
