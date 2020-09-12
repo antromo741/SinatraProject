@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         binding.pry
         if @user.save
             session[:id] = @user.id 
-            redirect "/"
+            #redirect "/users/login or /users/profile"
         else 
             #@errors= @user.errors.full_messages
             erb :'users/new
