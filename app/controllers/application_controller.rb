@@ -12,7 +12,13 @@ class ApplicationController < Sinatra::Base
   
   #This dictates where we startup in views, in browser the homepage
   get "/" do
-    erb :welcome
+    redirect "/login"
+  end
+
+  private
+  
+  def current_user
+    User.find_by_id(session[:id]) 
   end
 
 end
