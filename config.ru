@@ -6,3 +6,5 @@ end
 
 run ApplicationController
 use FerretsController
+use UsersController
+
