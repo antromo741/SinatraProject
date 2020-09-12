@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
     end
   
     post '/login' do 
-      # find the user by their email:
+      
       user = User.find_by_email(params[:email])
-      # if they typed in the right password then log them in, if not show them the form again
+      
       if user && user.authenticate(params[:password]) 
         session[:id] = user.id
         redirect "/ferrets"

@@ -1,17 +1,20 @@
 class UsersController < ApplicationController 
 
     get '/users/new' do 
-      # render the form to create a user account
       erb :'users/new'
     end 
   
     post '/users/new' do 
       @user = User.new(email: params[:email], password: params[:password])
-      if @user.save
-        session[:id] = @user.id
+      @user.save
+      user = User.find_by_email(params[:email])
+      # if they typed in the right password then log them in, if not show them the form again
+      if user && user.authenticate(params[:password]) 
+        session[:id] = user.id
         redirect "/ferrets"
       else 
-        erb :'users/new'
+        @error = "Must be an Email"
+        erb :'/sessions/login'
       end
     end
   end
