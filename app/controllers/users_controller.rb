@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         session[:id] = user.id
         redirect "/ferrets"
       else 
-        @error = "Must be an Email"
+        @error = "Must be an email"
         erb :'/sessions/login'
       end
     end

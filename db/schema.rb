@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20200912131538) do
     t.string   "name"
     t.string   "hair"
     t.string   "short_description"
+    t.integer  "user_id"
+    t.boolean  "dropoff"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
