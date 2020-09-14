@@ -20,7 +20,7 @@ class FerretsController < ApplicationController
 
   # GET: /ferrets/5
   get "/ferrets/:id" do
-    @ferret = Ferret.find(params[:id])
+    @ferret = Ferret.find_by_id(params[:id])
     erb :"/ferrets/show.html"
     
   end

@@ -1,6 +1,8 @@
 <h1><%=@ferret.name%></h1>
 <p>Short Description: <%=@ferret.short_description %></p>
 <p>Hair Type: <%=@ferret.hair %></p>
+<p><%= @ferret.user.email %></p>
+
 <a href="/ferrets/<%= @ferret.id %>/edit"><input type="button" value="Edit" /></a>
 <form method="post" action="/ferrets/<%= @ferret.id %>">
 <input type="hidden" value="delete" name="_method"><input type="submit" value="Delete" /></form>
