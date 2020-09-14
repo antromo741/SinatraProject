@@ -14,13 +14,13 @@ class FerretsController < ApplicationController
   # POST: /ferrets
   post "/ferrets" do
    # binding.pry
-    ferret = Ferret.create(ferret_params)
-    redirect "/ferrets/#{ferret.id}"
+    current_user.ferrets.create(ferret_params)
+    redirect "/ferrets"#{ferret.id} wouldnt work with redirecting to that new ferret
   end
 
   # GET: /ferrets/5
   get "/ferrets/:id" do
-    @ferret = Ferret.find_by_id(params[:id])
+    @ferret = Ferret.find(params[:id])
     erb :"/ferrets/show.html"
     
   end
@@ -61,7 +61,7 @@ class FerretsController < ApplicationController
   private 
 
   def ferret_params
-    allowed = ["name", "hair","short_description","user_id" ]
+    allowed = ["name", "hair","short_description"]
     params.select{|k| allowed.include?(k)}
   end
 
