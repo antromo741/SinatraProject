@@ -8,14 +8,19 @@ class FerretsController < ApplicationController
 
   # GET: /ferrets/new
   get "/ferrets/new" do
+    @ferret = Ferret.new
     erb :"/ferrets/new.html"
   end
 
   # POST: /ferrets
   post "/ferrets" do
    # binding.pry
-    current_user.ferrets.create(ferret_params)
+    @ferret = current_user.ferrets.build(ferret_params)
+    if @ferret.save
     redirect "/ferrets"#{ferret.id} wouldnt work with redirecting to that new ferret
+    else 
+      erb :"/ferrets/new.html"
+    end
   end
 
   # GET: /ferrets/5
