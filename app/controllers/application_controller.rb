@@ -15,6 +15,13 @@ class ApplicationController < Sinatra::Base
     redirect "/login"
   end
 
+  error Active::RecordRecordNotFound do
+    @error = "Couldn't find that record"
+    erb :welcome
+  end
+
+
+  
   private
   
   def current_user

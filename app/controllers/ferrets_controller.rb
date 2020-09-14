@@ -8,6 +8,7 @@ class FerretsController < ApplicationController
 
   # GET: /ferrets/new
   get "/ferrets/new" do
+    redirect "/login" if not logged_in?
     @ferret = Ferret.new
     erb :"/ferrets/new.html"
   end
@@ -15,6 +16,7 @@ class FerretsController < ApplicationController
   # POST: /ferrets
   post "/ferrets" do
    # binding.pry
+    redirect "/login" if not logged_in?
     @ferret = current_user.ferrets.build(ferret_params)
     if @ferret.save
     redirect "/ferrets"#{ferret.id} wouldnt work with redirecting to that new ferret

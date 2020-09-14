@@ -17,7 +17,8 @@
 <div><label for="name">What is your ferrets name? Name</label></div>
 <input type="text" id="name" name="name" value="<%= @ferret.name %>" />
 </p>
-<%#I notice from videos I could put the name= as "ferret[name]" and "ferret[hair]"%>
+<%#I notice from videos I could put the name= as "ferret[name]" and "ferret[hair]
+but I would need to get rid of ferret params"%>
 <p>
 <div><label for="hair">What does your ferret look like? Hair Type</label></div>
 <input type="text" id="hair" name="hair" value="<%= @ferret.hair %>" />

@@ -1,4 +1,16 @@
 <h1>Ferret Edit Sheet</h1>
+
+<% if @ferret.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @ferret.errors.count %> error(s) prohibited this ferret from being registered:</h2>
+ 
+    <ul>
+    <% @ferret.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
 <form method="post" action="/ferrets/<%= @ferret.id %>">
 <input type="hidden" value="patch" name="_method">
 <p>
