@@ -2,6 +2,8 @@
 <p>Short Description: <%=@ferret.short_description %></p>
 <p>Hair Type: <%=@ferret.hair %></p>
 <p><%= @ferret.user.email %></p>
+<%#maybe an IF statement in here would allow 
+me to display the user only if there us a user%>
 
 <a href="/ferrets/<%= @ferret.id %>/edit"><input type="button" value="Edit" /></a>
 <form method="post" action="/ferrets/<%= @ferret.id %>">

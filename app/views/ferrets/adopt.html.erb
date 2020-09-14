@@ -9,11 +9,22 @@
   <p>Select an existing pet or create a new one below.</p>
  
  
-  <h3>Existing Pets</h3>
-  <% @ferrets.each do |pet| %>
-    <input type="checkbox" name="user[ferret_ids][]" id="<%= @ferret.id %>" value="<%= @ferret.id %>"><%= @ferret.name %></input><br>
+  <h3>Ferrets for Adoption</h3>
+  <% @ferrets.each do |ferret| %>
+    <input type="checkbox" name="user[tags_ids][]" id="<%= @ferret.id %>" value="<%= @ferret.id %>"><%= @ferret.name %></input><br>
   <% end %>
   <br>
  
   <input type="submit" value="Adopt Ferret">
 </form>
+
+
+<%#  Something  i want to implement is being able to adopt a 
+ferret that has no owner, i'll create them in 
+tux or have a seed file, but how can I get around 
+the displaying of a ferret without  user????%>
+<%# Also After a ferret is registered it can be dropped off and 
+and it will appear on the index file,
+A user should be able to pick up or drop off a ferret,
+which will then indicate if they appear on the index page
+and lastly a User should be able to adopt a ferret with no owner%>

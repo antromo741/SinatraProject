@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         redirect "/ferrets"
       else 
         @error = "Must be an email"
-        erb :'/sessions/login'
+        erb :'/users/new'
       end
     end
   end
