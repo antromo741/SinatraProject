@@ -45,10 +45,23 @@ class FerretsController < ApplicationController
     redirect "/ferrets"
   end
 
+  #get "/ferrets/:id/adopt" do
+  #  @ferrets = Ferret.all
+  #  erb :"ferrets/adopt.html"
+  #end
+
+ # post "/ferrets/:id/adopt" do
+   # @ferret = Ferret.find(params[:id])
+   # @ferret.update(ferret_params)
+   # redirect "/ferrets/#{@ferret.id}"
+  #end
+
+
+
   private 
 
   def ferret_params
-    allowed = ["name", "hair","short_description" ]
+    allowed = ["name", "hair","short_description","user_id" ]
     params.select{|k| allowed.include?(k)}
   end
 

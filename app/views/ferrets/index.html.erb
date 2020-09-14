@@ -2,7 +2,7 @@
 <p> These are our ferrets at the camp today!</p>
 <ul>
 <% @ferrets.each do |ferret| %>
-<li><a href="/ferrets/<%=ferret.id %>"><%= ferret.name %>  <%# ferret.hair %></li>
+<li><a href="/ferrets/<%= ferret.id %>"><%= ferret.name %>  <%# ferret.hair %></li>
 <% end %>
 </ul>
 <%# take out the hair, was just testing if worked%>

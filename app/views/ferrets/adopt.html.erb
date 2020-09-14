@@ -1,0 +1,19 @@
+<h1>Adopt A Ferret</h1>
+ 
+<form action="/ferrets/:id/adopt" method="post">
+  <label>Owner Name:</label>
+  <br>
+  <input type="text" name="user[name]">
+ 
+  <br>
+  <p>Select an existing pet or create a new one below.</p>
+ 
+ 
+  <h3>Existing Pets</h3>
+  <% @ferrets.each do |pet| %>
+    <input type="checkbox" name="user[ferret_ids][]" id="<%= @ferret.id %>" value="<%= @ferret.id %>"><%= @ferret.name %></input><br>
+  <% end %>
+  <br>
+ 
+  <input type="submit" value="Adopt Ferret">
+</form>

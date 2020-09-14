@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     end 
   
     post '/users/new' do 
-      @user = User.new(email: params[:email], password: params[:password])
-      @user.save
-      user = User.find_by_email(params[:email])
+      user = User.new(email: params[:email], password: params[:password])
+      user.save
+     # user = User.find_by_email(params[:email])
       # if they typed in the right password then log them in, if not show them the form again
       if user && user.authenticate(params[:password]) 
         session[:id] = user.id
