@@ -40,14 +40,16 @@ class FerretsController < ApplicationController
 
   # PATCH: /ferrets/5
   patch "/ferrets/:id" do
-    @ferret = Ferret.find(params[:id])
+    set_ferret
+    #@ferret = Ferret.find(params[:id])
     @ferret.update(ferret_params)
     redirect "/ferrets/#{@ferret.id}"
   end
 
   # DELETE: /ferrets/5/delete
   delete "/ferrets/:id" do
-    @ferret = Ferret.find(params[:id])
+    #@ferret = Ferret.find(params[:id])
+    set_ferret
     @ferret.destroy
     redirect "/ferrets"
   end
@@ -73,10 +75,10 @@ class FerretsController < ApplicationController
   end
 
   def set_ferret
-    @ferret = Ferret.find(params[:id])
-    if@ferret.nil?
-      flash[:error] = "Couldn't find a post with id: #{params[:id]}"
-      redirect "/posts"
+    @ferret = Ferret.find_by_id(params[:id])
+    if @ferret.nil?
+      flash[:error] = "Couldn't find a ferret with id: #{params[:id]}"
+      redirect "/ferrets"
     end
   end
 
