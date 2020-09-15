@@ -8,7 +8,8 @@ class FerretsController < ApplicationController
 
   # GET: /ferrets/new
   get "/ferrets/new" do
-    redirect "/login" if not logged_in?
+    redirect_if_not_logged_in
+    #redirect "/login" if not logged_in?
     @ferret = Ferret.new
     erb :"/ferrets/new.html"
   end
@@ -16,7 +17,8 @@ class FerretsController < ApplicationController
   # POST: /ferrets
   post "/ferrets" do
    # binding.pry
-    redirect "/login" if not logged_in?
+   #redirect "/login" if not logged_in?
+    redirect_if_not_logged_in
     @ferret = current_user.ferrets.build(ferret_params)
     if @ferret.save
     redirect "/ferrets"#{ferret.id} wouldnt work with redirecting to that new ferret
@@ -40,9 +42,9 @@ class FerretsController < ApplicationController
 
   # PATCH: /ferrets/5
   patch "/ferrets/:id" do
-    set_ferret
-    authorize_ferret(@ferret)
     #@ferret = Ferret.find(params[:id])
+    set_ferret
+    redirect_if_not_authorized
     if @ferret.update(ferret_params)
       flash[:success] = "Ferret Form succesfully updated"
       redirect "/ferrets/#{@ferret.id}"
@@ -55,7 +57,7 @@ class FerretsController < ApplicationController
   delete "/ferrets/:id" do
     #@ferret = Ferret.find(params[:id])
     set_ferret
-    authorize_ferret(@ferret)
+    redirect_if_not_authorized
     @ferret.destroy
     redirect "/ferrets"
   end
@@ -89,10 +91,12 @@ class FerretsController < ApplicationController
   end
 
   def authorize_ferret(ferret)
-    if current_user == ferret.user  
-      true
-    else
-      flash[:error] = "You don't have permission to do that action"
+    current_user == ferret.user  
+  end
+
+  def redirect_if_not_authorized
+    if !authorize_ferret(@ferret)
+    flash[:error] = "You don't have permission to do that action"
       redirect "/ferrets"
     end
   end

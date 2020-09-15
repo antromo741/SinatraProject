@@ -37,6 +37,14 @@ class ApplicationController < Sinatra::Base
     !!current_user
   end
 
+
+  def redirect_if_not_logged_in
+    if !logged_in?
+      flash[:error] = "you must be logged in to view this page"
+      redirect request.referrer || "/login"
+
+    end
+  end
   #work in progress
   #def picked up
   #Ferret.where(picked_up: true)
