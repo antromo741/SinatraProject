@@ -42,7 +42,6 @@ class ApplicationController < Sinatra::Base
     if !logged_in?
       flash[:error] = "you must be logged in to view this page"
       redirect request.referrer || "/login"
-
     end
   end
   #work in progress

@@ -37,6 +37,7 @@ class FerretsController < ApplicationController
   # GET: /ferrets/5/edit
   get "/ferrets/:id/edit" do
     set_ferret
+    redirect_if_not_authorized
     erb :"/ferrets/edit.html"
   end
 
