@@ -41,15 +41,21 @@ class FerretsController < ApplicationController
   # PATCH: /ferrets/5
   patch "/ferrets/:id" do
     set_ferret
+    authorize_ferret(@ferret)
     #@ferret = Ferret.find(params[:id])
-    @ferret.update(ferret_params)
-    redirect "/ferrets/#{@ferret.id}"
+    if @ferret.update(ferret_params)
+      flash[:success] = "Ferret Form succesfully updated"
+      redirect "/ferrets/#{@ferret.id}"
+    else 
+      erb :"/ferrets/edit.html"
+    end
   end
 
   # DELETE: /ferrets/5/delete
   delete "/ferrets/:id" do
     #@ferret = Ferret.find(params[:id])
     set_ferret
+    authorize_ferret(@ferret)
     @ferret.destroy
     redirect "/ferrets"
   end
@@ -82,5 +88,13 @@ class FerretsController < ApplicationController
     end
   end
 
+  def authorize_ferret(ferret)
+    if current_user == ferret.user  
+      true
+    else
+      flash[:error] = "You don't have permission to do that action"
+      redirect "/ferrets"
+    end
+  end
 
 end

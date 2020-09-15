@@ -37,6 +37,9 @@ class ApplicationController < Sinatra::Base
     !!current_user
   end
 
- 
+  #work in progress
+  #def picked up
+  #Ferret.where(picked_up: true)
+  #end
 
 end
