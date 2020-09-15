@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
 
   not_found do
     flash[:error] = "Whoops! Couldn't find that route"
-    redirect "/posts"
+    redirect "/ferrets"
   end
 
   private
@@ -44,6 +44,7 @@ class ApplicationController < Sinatra::Base
       redirect request.referrer || "/login"
     end
   end
+
   #work in progress
   #def picked up
   #Ferret.where(picked_up: true)

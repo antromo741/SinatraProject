@@ -96,6 +96,7 @@ class FerretsController < ApplicationController
   end
 
   def redirect_if_not_authorized
+    redirect_if_not_logged_in
     if !authorize_ferret(@ferret)
     flash[:error] = "You don't have permission to do that action"
       redirect "/ferrets"
