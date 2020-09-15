@@ -63,17 +63,19 @@ class FerretsController < ApplicationController
     redirect "/ferrets"
   end
 
+  #FFA = ferret for adoption
+  #I believe I need another model and controller to implement this
   #get "/ferrets/:id/adopt" do
-  #  @ferrets = Ferret.all
+  #  @ffa = FFA.all
   #  erb :"ferrets/adopt.html"
   #end
 
  # post "/ferrets/:id/adopt" do
-   # @ferret = Ferret.find(params[:id])
-   # @ferret.update(ferret_params)
-   # redirect "/ferrets/#{@ferret.id}"
+   # @ffa = FFA.find(params[:id])
+   # @ffa.update(ferret_params)
+   # redirect "/ferrets/#{@ffa.id}"
   #end
-
+  #
 
 
   private 
