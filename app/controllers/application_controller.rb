@@ -5,9 +5,11 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
+    set :raise_errors, true
     set :method_override, true
     set :sessions, true
     set :session_secret, ENV['SESSION_SECRET']
+    register Sinatra::Flash
   end
   
   #This dictates where we startup in views, in browser the homepage
@@ -15,13 +17,16 @@ class ApplicationController < Sinatra::Base
     redirect "/login"
   end
 
-  error Active::RecordRecordNotFound do
-    @error = "Couldn't find that record"
-    erb :welcome
+ # error Active::RecordRecordNotFound do
+  # flash[:error] = "Couldn't find that record"
+   # redirect "/ferrets"
+  #end
+
+  not_found do
+    flash[:error] = "Whoops! Couldn't find that route"
+    redirect "/posts"
   end
 
-
-  
   private
   
   def current_user
@@ -31,5 +36,7 @@ class ApplicationController < Sinatra::Base
   def logged_in?
     !!current_user
   end
+
+ 
 
 end

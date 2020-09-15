@@ -72,5 +72,6 @@ class FerretsController < ApplicationController
     params.select{|k| allowed.include?(k)}
   end
 
+  
 
 end
