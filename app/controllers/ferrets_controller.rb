@@ -27,14 +27,14 @@ class FerretsController < ApplicationController
 
   # GET: /ferrets/5
   get "/ferrets/:id" do
-    @ferret = Ferret.find(params[:id])
+    set_ferret
     erb :"/ferrets/show.html"
     
   end
 
   # GET: /ferrets/5/edit
   get "/ferrets/:id/edit" do
-    @ferret = Ferret.find(params[:id])
+    set_ferret
     erb :"/ferrets/edit.html"
   end
 
@@ -72,6 +72,13 @@ class FerretsController < ApplicationController
     params.select{|k| allowed.include?(k)}
   end
 
-  
+  def set_ferret
+    @ferret = Ferret.find(params[:id])
+    if@ferret.nil?
+      flash[:error] = "Couldn't find a post with id: #{params[:id]}"
+      redirect "/posts"
+    end
+  end
+
 
 end
