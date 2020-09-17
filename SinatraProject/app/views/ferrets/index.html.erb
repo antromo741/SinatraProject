@@ -1,0 +1,17 @@
+<h1>Welcome to Ferret Camp!</h1>
+<p> These are our ferrets at the camp today!</p>
+<ul>
+
+<% @ferrets.each do |ferret| %>
+<li><a href="/ferrets/<%= ferret.id %>"><%= ferret.name %>  <%# ferret.hair %></li>
+<% end %>
+</ul>
+<%# take out the hair, was just testing if worked%>
+
+<h2>Here are your registered ferrets.</h2>
+
+<ul>
+<% current_user.ferrets.each do |ferret| %>
+<li><a href="/ferrets/<%= ferret.id %>"><%= ferret.name %>  <%# ferret.hair %></li>
+<% end %>
+</ul>
