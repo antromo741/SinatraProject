@@ -2,7 +2,8 @@ class FerretsController < ApplicationController
 
   # GET: /ferrets
   get "/ferrets" do
-    @ferrets = Ferret.all
+    
+    @ferrets = Ferret.where(picked_up: false)
     erb :"/ferrets/index.html"
   end
 

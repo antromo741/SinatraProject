@@ -1,23 +1,14 @@
-class PickupController < FerretController
+class PickupController < FerretsController
 
-
-
-    get "/ferrets/:id/pickup" do
-        set_ferret
-        erb ":ferrets/pickup.html"
-    end
 
   
   #trying to setup a ferret pickup route
     patch "/ferrets/:id/pickup" do
+
         set_ferret
         redirect_if_not_authorized
 
-        if @ferret.update(picked_up: true)
-
-
-
-   
+        if @ferret.update(picked_up: true)   
             redirect "/ferrets"
         end
     end
@@ -27,10 +18,6 @@ class PickupController < FerretController
         redirect_if_not_authorized
 
         if @ferret.update(picked_up: false)
-
-
-
-   
             redirect "/ferrets"
         end
     end

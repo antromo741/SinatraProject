@@ -8,3 +8,4 @@ run ApplicationController
 use FerretsController
 use UsersController
 use SessionsController
+use PickupController

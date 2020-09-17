@@ -6,17 +6,22 @@
 me to display the user only if there us a user%>
 <%#we can use this to restrict the ferrets we see but i dont think that fits thi sapplication%>
 <% if authorize_ferret(@ferret)%>
-<a href="/ferrets/<%= @ferret.id %>/edit"><input type="button" value="Edit" /></a>
-<form method="post" action="/ferrets/<%= @ferret.id %>" style="display: inline-block;">
-<input type="hidden" value="delete" name="_method"><input type="submit" value="Delete" />
-</form>
-  <%=if @ferret.picked_up%>
-  
+    <a href="/ferrets/<%= @ferret.id %>/edit"><input type="button" value="Edit" /></a>
+    <form method="post" action="/ferrets/<%= @ferret.id %>" style="display: inline-block;">
+        <input type="hidden" value="delete" name="_method"><input type="submit" value="Delete" />
+    </form>
 
-  <%= else %>
-
-
-
+    <% if @ferret.picked_up%>
+        <form method="post" action="/ferrets/<%= @ferret.id %>/dropoff">
+            <input type="hidden" value="patch" name="_method">
+            <input type="submit" value="DropOff" />
+        </form>
+ 
+    <% else %>
+        <form method="post" action="/ferrets/<%= @ferret.id %>/pickup">
+            <input type="hidden" value="patch" name="_method">
+            <input type="submit" value="Pickup" />
+        </form>
+    <% end %>
 <% end %>
-
 <%#might look better without the syled display tbh%>
