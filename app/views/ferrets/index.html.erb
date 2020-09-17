@@ -6,3 +6,11 @@
 <% end %>
 </ul>
 <%# take out the hair, was just testing if worked%>
+
+<h2>Here are your registered ferrets.</h2>
+
+<ul>
+<% current_user.ferrets.each do |ferret| %>
+<li><a href="/ferrets/<%= ferret.id %>"><%= ferret.name %>  <%# ferret.hair %></li>
+<% end %>
+</ul>

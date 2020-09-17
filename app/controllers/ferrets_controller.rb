@@ -66,16 +66,19 @@ class FerretsController < ApplicationController
   #FFA = ferret for adoption
   #I believe I need another model and controller to implement this
   #get "/ferrets/:id/adopt" do
-  #  @ffa = FFA.all
+  #  @ffa = Ferret.where(user_id: nil)
   #  erb :"ferrets/adopt.html"
   #end
 
  # post "/ferrets/:id/adopt" do
-   # @ffa = FFA.find(params[:id])
+  #
+   # @ffa = Ferret.find(params[:id])
    # @ffa.update(ferret_params)
    # redirect "/ferrets/#{@ffa.id}"
   #end
   #
+  #wed also need an adoption get post edit and update 
+  #so that the ferret could be asigned a new ferret
 
 
   private 
@@ -104,5 +107,6 @@ class FerretsController < ApplicationController
       redirect "/ferrets"
     end
   end
-
+   
+   
 end
