@@ -1,0 +1,12 @@
+<h1><%=@ferret.name%></h1>
+<p>Short Description: <%=@ferret.short_description %></p>
+<p>Hair Type: <%=@ferret.hair %></p>
+<p><%= @ferret.user.email %></p>
+
+
+<form action="/ferrets/<%= @ferret.id %>/picked_up" method="post">
+<p>Picking Up or Dropping off?</p>
+<input type="radio" name=":true" value="<%= @ferret.picked_up %>"> PickUp
+<input type="radio" name=":false" value="<%= @ferret.picked_up %>"> DropOff
+<p><input type="submit" value="Submit"></p>
+</form>

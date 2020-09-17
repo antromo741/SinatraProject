@@ -1,0 +1,36 @@
+<h1>Ferret Register</h1>
+<% if @ferret.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @ferret.errors.count %> error(s) prohibited this ferret from being registered:</h2>
+ 
+    <ul>
+    <% @ferret.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <%# My Error messages worked lets 
+  spice up the fonts and what not later%>
+<form method="post" action="/ferrets">
+<p>
+<div><label for="name">What is your ferrets name? Name</label></div>
+<input type="text" id="name" name="name" value="<%= @ferret.name %>" />
+</p>
+<%#I notice from videos I could put the name= as "ferret[name]" and "ferret[hair]
+but I would need to get rid of ferret params"%>
+<p>
+<div><label for="hair">What does your ferret look like? Hair Type</label></div>
+<input type="text" id="hair" name="hair" value="<%= @ferret.hair %>" />
+</p>                
+<%#Made the values with @ferret to now not let the user move on without
+fillin in the fields, this relates to the ferret controller with
+get ferrets/new and post /ferrets%>
+
+<p>
+<div><label for="short_description">Please tell us about your ferret</label></div>
+<textarea rows="5" cols="40" id= "short_description" name="short_description" type= "text"><%= @ferret.short_description %></textarea>
+</p>
+<input type="submit" value="Signup Ferret">
+</form>
+
