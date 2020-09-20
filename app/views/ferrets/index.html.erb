@@ -9,9 +9,10 @@
 <%# take out the hair, was just testing if worked%>
 
 <h2>Here are your registered ferrets.</h2>
-
+<% if logged_in? %>
 <ul>
 <% current_user.ferrets.each do |ferret| %>
 <li><a href="/ferrets/<%= ferret.id %>"><%= ferret.name %>  <%# ferret.hair %></li>
+<% end %>
 <% end %>
 </ul>
