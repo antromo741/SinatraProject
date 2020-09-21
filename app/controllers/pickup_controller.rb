@@ -1,7 +1,7 @@
 class PickupController < FerretsController
 
 
-  
+  #view logic with ferret in or out
   #trying to setup a ferret pickup route
     patch "/ferrets/:id/pickup" do
 
@@ -12,7 +12,7 @@ class PickupController < FerretsController
             redirect "/ferrets"
         end
     end
-     #view logic with ferret in or out
+   
     patch "/ferrets/:id/dropoff" do
         set_ferret
         redirect_if_not_authorized

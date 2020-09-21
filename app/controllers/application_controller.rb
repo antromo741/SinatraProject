@@ -6,13 +6,13 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     set :raise_errors, true
-    set :method_override, true
-    set :sessions, true
-    set :session_secret, ENV['SESSION_SECRET']
-    register Sinatra::Flash
+    set :method_override, true 
+    set :sessions, true 
+    set :session_secret, ENV['SESSION_SECRET'] 
+    register Sinatra::Flash 
   end
   
-  #This dictates where we startup in views, in browser the homepage
+
   get "/" do
     redirect "/login"
   end
