@@ -15,4 +15,20 @@ class UsersController < ApplicationController
       erb :'/users/new'
     end
   end
+
+
+
+
+
+  get 'user/:id/edit' do
+    @user = User.find_by_id(params[:id])
+     if current_user == @user
+    erb :'users/edit'
+     else
+      redirect "/users/#{@user.id}"
+  end
+end
+
+  post 
+end
 end
